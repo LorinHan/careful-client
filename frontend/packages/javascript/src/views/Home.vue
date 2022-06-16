@@ -1,22 +1,7 @@
 <template>
   <div class="home">
-    <!-- Logo -->
-    <img class="logo" alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld :msg="t('homepage.welcome')" />
-    <!-- Bottom button -->
-    <!-- 底部按钮 -->
-    <div class="link">
-      <OpenLink
-        href="https://wails.io/docs/gettingstarted/installation"
-        class="btn start"
-        >{{ t("homepage.getting-started") }}</OpenLink
-      >
-      <OpenLink
-        href="https://github.com/misitebao/wails-template-vue"
-        class="btn star"
-        >{{ t("homepage.star-me") }}</OpenLink
-      >
-    </div>
+    <p>Hello wails vue</p>
+		<el-button type="primary">>El BTN</el-button>
   </div>
 </template>
 

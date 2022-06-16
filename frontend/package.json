@@ -9,9 +9,15 @@
   },
   "author": "Lorin",
   "license": "MIT",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "engines": {
     "node": ">=15.0.0",
     "npm": ">=7.0.0"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.5",
+    "element-plus": "^2.2.5"
   }
 }

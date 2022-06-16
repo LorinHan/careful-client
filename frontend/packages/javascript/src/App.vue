@@ -1,203 +1,149 @@
 <template>
-  <!-- Header -->
-  <!-- 头部 -->
-  <div class="header" data-wails-drag>
-    <!-- navigation -->
-    <!-- 导航 -->
-    <div class="nav" data-wails-no-drag>
-      <router-link to="/">{{ t("nav.home") }}</router-link>
-      <router-link to="/about">{{ t("nav.about") }}</router-link>
-    </div>
-    <!-- Menu -->
-    <!-- 菜单 -->
-    <div class="menu" data-wails-no-drag>
-      <div class="language">
-        <div
-          v-for="item in languages"
-          :key="item"
-          :class="{ active: item === locale }"
-          @click="onclickLanguageHandle(item)"
-          class="lang-item"
-        >
-          {{ t("languages." + item) }}
-        </div>
-      </div>
-      <div class="bar">
-        <div class="bar-btn" @click="onclickMinimise">
-          {{ t("topbar.minimise") }}
-        </div>
-        <div class="bar-btn" @click="onclickQuit">{{ t("topbar.quit") }}</div>
-      </div>
-    </div>
-  </div>
-  <!-- Page -->
-  <!-- 页面 -->
-  <div class="view">
-    <router-view />
-  </div>
+	<div id="app">
+		<el-container style="height: 100%;">
+			<el-header id="header">
+				<div class="left"><el-icon><ColdDrink /></el-icon> Careful</div>
+				<div class="right"></div>
+			</el-header>
+			<el-container style="height: 100%;">
+				<el-aside width="200px">
+					<el-menu style="height: 100%;" active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" :default-openeds="['1', '2', '3', '4']"
+					 text-color="#fff" @open="handleOpen" @close="handleClose">
+					 <el-menu-item index="1">
+					 	<el-icon><Box /></el-icon>
+					 	<span>服务管理</span>
+					 </el-menu-item>
+						<el-sub-menu index="2">
+							<template #title>
+								<el-icon>
+									<setting />
+								</el-icon>
+								<span>系统设置</span>
+							</template>
+							<el-menu-item-group title="Group One">
+								<el-menu-item index="1-1">item one</el-menu-item>
+								<el-menu-item index="1-2">item one</el-menu-item>
+							</el-menu-item-group>
+							<el-menu-item-group title="Group Two">
+								<el-menu-item index="1-3">item three</el-menu-item>
+							</el-menu-item-group>
+							<el-sub-menu index="1-4">
+								<template #title>item four</template>
+								<el-menu-item index="1-4-1">item one</el-menu-item>
+							</el-sub-menu>
+						</el-sub-menu>
+						<el-menu-item index="2">
+							<el-icon>
+								<icon-menu />
+							</el-icon>
+							<span>Navigator Two</span>
+						</el-menu-item>
+					</el-menu>
+				</el-aside>
+				<el-main>
+					<div class="view">
+						<router-view />
+					</div>
+				</el-main>
+			</el-container>
+		</el-container>
+	</div>
 </template>
 
 <script>
-import { useI18n } from "vue-i18n";
+	import {
+		useI18n
+	} from "vue-i18n";
 
-export default {
-  setup() {
-    const { t, availableLocales, locale } = useI18n();
+	export default {
+		setup() {
+			const {
+				t,
+				availableLocales,
+				locale
+			} = useI18n();
 
-    // List of supported languages
-    // 支持的语言列表
-    const languages = availableLocales;
+			// List of supported languages
+			// 支持的语言列表
+			const languages = availableLocales;
 
-    // Click to switch language
-    // 点击切换语言
-    const onclickLanguageHandle = (item) => {
-      item !== locale.value ? (locale.value = item) : false;
-    };
+			// Click to switch language
+			// 点击切换语言
+			const onclickLanguageHandle = (item) => {
+				item !== locale.value ? (locale.value = item) : false;
+			};
 
-    const onclickMinimise = () => {
-      window.runtime.WindowMinimise();
-    };
-    const onclickQuit = () => {
-      window.runtime.Quit();
-    };
+			const onclickMinimise = () => {
+				window.runtime.WindowMinimise();
+			};
+			const onclickQuit = () => {
+				window.runtime.Quit();
+			};
 
-    return {
-      t,
-      languages,
-      locale,
-      onclickLanguageHandle,
-      onclickMinimise,
-      onclickQuit,
-    };
-  },
-};
+			return {
+				t,
+				languages,
+				locale,
+				onclickLanguageHandle,
+				onclickMinimise,
+				onclickQuit,
+			};
+		},
+		methods: {
+			handleOpen (key, keyPath) {
+				console.log(key, keyPath)
+			},
+			handleClose (key, keyPath) {
+				console.log(key, keyPath)
+			}
+		}
+	};
 </script>
 
 <style lang="scss">
-@import url("./assets/css/reset.css");
-@import url("./assets/css/font.css");
+	@import url("./assets/css/reset.css");
+	@import url("./assets/css/font.css");
 
-html {
-  width: 100%;
-  height: 100%;
-}
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: "JetBrainsMono";
-  background-color: transparent;
-}
+	html {
+		width: 100%;
+		height: 100%;
+	}
 
-#app {
-  position: relative;
-  // width: 900px;
-  // height: 520px;
-  height: 100%;
-  background-color: rgba(219, 188, 239, 0.9);
-  overflow: hidden;
-}
-.header {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
-  padding: 0 10px;
-  background-color: rgba(171, 126, 220, 0.9);
-  .nav {
-    a {
-      display: inline-block;
-      min-width: 50px;
-      height: 30px;
-      line-height: 30px;
-      padding: 0 5px;
-      margin-right: 8px;
-      background-color: #ab7edc;
-      border-radius: 2px;
-      text-align: center;
-      text-decoration: none;
-      color: #000000;
-      font-size: 14px;
-      white-space: nowrap;
-      &:hover,
-      &.router-link-exact-active {
-        background-color: #d7a8d8;
-        color: #ffffff;
-      }
-    }
-  }
-  .menu {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
-    .language {
-      margin-right: 20px;
-      border-radius: 2px;
-      background-color: #c3c3c3;
-      overflow: hidden;
-      .lang-item {
-        display: inline-block;
-        min-width: 50px;
-        height: 30px;
-        line-height: 30px;
-        padding: 0 5px;
-        background-color: transparent;
-        text-align: center;
-        text-decoration: none;
-        color: #000000;
-        font-size: 14px;
-        &:hover {
-          background-color: #ff050542;
-          cursor: pointer;
-        }
-        &.active {
-          background-color: #ff050542;
-          color: #ffffff;
-          cursor: not-allowed;
-        }
-      }
-    }
-    .bar {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: flex-end;
-      min-width: 150px;
-      .bar-btn {
-        display: inline-block;
-        min-width: 80px;
-        height: 30px;
-        line-height: 30px;
-        padding: 0 5px;
-        margin-left: 8px;
-        background-color: #ab7edc;
-        border-radius: 2px;
-        text-align: center;
-        text-decoration: none;
-        color: #000000;
-        font-size: 14px;
-        &:hover {
-          background-color: #d7a8d8;
-          color: #ffffff;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-}
-
-.view {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-}
+	body {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		font-family: "JetBrainsMono";
+		background-color: transparent;
+	}
+	#app {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		#header {
+			padding: 0;
+			.left {
+				background-color: #545c64;
+				border: 1px solid rgb(67, 74, 80);
+				color: #fff;
+				font-weight: 600;
+				font-size: 18px;
+				float: left;
+				text-align: center;
+				width: 199px;
+				height: 60px;
+				line-height: 60px;
+				i {
+					font-weight: 600;
+					font-size: 18px;
+				}
+			}
+			
+			.right {
+				height: 60px;
+				border: 1px solid rgb(67, 74, 80);
+			}
+		}
+	}
 </style>
