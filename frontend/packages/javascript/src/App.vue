@@ -7,37 +7,21 @@
 			</el-header>
 			<el-container style="height: 100%;">
 				<el-aside width="200px">
-					<el-menu style="height: 100%;" active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" :default-openeds="['1', '2', '3', '4']"
-					 text-color="#fff" @open="handleOpen" @close="handleClose">
-					 <el-menu-item index="1">
+					<el-menu style="height: 100%;" active-text-color="#ffd04b" background-color="#545c64" class="el-menu-vertical-demo" :default-openeds="['/', '/settings', '3', '4']"
+					 text-color="#fff" @open="handleOpen" @close="handleClose" default-active="1" router>
+					 <el-menu-item index="/">
 					 	<el-icon><Box /></el-icon>
 					 	<span>服务管理</span>
 					 </el-menu-item>
-						<el-sub-menu index="2">
+						<el-sub-menu index="/settings">
 							<template #title>
 								<el-icon>
 									<setting />
 								</el-icon>
 								<span>系统设置</span>
 							</template>
-							<el-menu-item-group title="Group One">
-								<el-menu-item index="1-1">item one</el-menu-item>
-								<el-menu-item index="1-2">item one</el-menu-item>
-							</el-menu-item-group>
-							<el-menu-item-group title="Group Two">
-								<el-menu-item index="1-3">item three</el-menu-item>
-							</el-menu-item-group>
-							<el-sub-menu index="1-4">
-								<template #title>item four</template>
-								<el-menu-item index="1-4-1">item one</el-menu-item>
-							</el-sub-menu>
+								<el-menu-item index="/settings/node">网络节点</el-menu-item>
 						</el-sub-menu>
-						<el-menu-item index="2">
-							<el-icon>
-								<icon-menu />
-							</el-icon>
-							<span>Navigator Two</span>
-						</el-menu-item>
 					</el-menu>
 				</el-aside>
 				<el-main>

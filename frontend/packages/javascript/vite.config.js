@@ -6,6 +6,9 @@ import pkg from "../../package.json";
 import { createHtmlPlugin } from "vite-plugin-html";
 // https://vitejs.dev/config/
 export default defineConfig({
+	server: {
+		hmr: true,
+	},
   plugins: [
     vue(),
     createHtmlPlugin({

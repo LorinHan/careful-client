@@ -9,11 +9,13 @@ import publicComponents from "@/components/public";
 import ElementPlus from 'element-plus';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'element-plus/dist/index.css';
+import api from "@/api/index.js"
 
 const app = createApp(App);
 
 app.use(publicComponents);
 app.use(ElementPlus);
+app.config.globalProperties.$api = api;
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
