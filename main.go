@@ -25,15 +25,15 @@ func main() {
 	// Create application with options
 	// 使用选项创建应用
 	err := wails.Run(&options.App{
-		Title:             "careful-client",
-		Width:             900,
-		Height:            600,
-		MinWidth:          900,
-		MinHeight:         600,
-		MaxWidth:          1200,
-		MaxHeight:         800,
+		Title:     "careful-client",
+		Width:     1366,
+		Height:    700,
+		MinWidth:  900,
+		MinHeight: 600,
+		// MaxWidth:          1200,
+		// MaxHeight:         800,
 		DisableResize:     false,
-		Fullscreen:        true,
+		Fullscreen:        false,
 		Frameless:         false,
 		StartHidden:       false,
 		HideWindowOnClose: false,
@@ -63,10 +63,10 @@ func main() {
 		// Mac平台特定选项
 		Mac: &mac.Options{
 			TitleBar: &mac.TitleBar{
-				TitlebarAppearsTransparent: true,
-				HideTitle:                  true,
+				TitlebarAppearsTransparent: false,
+				HideTitle:                  false,
 				HideTitleBar:               false,
-				FullSizeContent:            true,
+				FullSizeContent:            false,
 				UseToolbar:                 false,
 				HideToolbarSeparator:       false,
 			},

@@ -1,14 +1,32 @@
 {
   "name": "careful-client",
-  "outputfilename": "careful-client",
   "assetdir": "frontend/dist",
-  "frontend:install": "npm install",
   "frontend:build": "npm run build -w js",
+  "frontend:install": "npm install",
+  "frontend:dev": "",
   "frontend:dev:watcher": "npm run dev -w js",
-  "frontend:dev:serverUrl": "http://localhost:3000",
-  "debounceMS": 1000,
-  "author": {
+  "wailsjsdir": "./frontend",
+  "version": "2",
+  "Path": "",
+  "BuildDir": "",
+  "outputfilename": "careful-client",
+  "OutputType": "",
+  "Platform": "",
+  "runNonNativeBuildHooks": false,
+  "postBuildHooks": null,
+  "Author": {
     "name": "Lorin",
     "email": "627075866@qq.com"
-  }
+  },
+  "Info": {
+    "companyName": "careful-client",
+    "productName": "careful-client",
+    "productVersion": "1.0.0",
+    "copyright": "Copyright.........",
+    "comments": "Built using Wails (https://wails.app)"
+  },
+  "debounceMS": 1000,
+  "devserverurl": "http://localhost:34115",
+  "appargs": "",
+  "nsisType": ""
 }

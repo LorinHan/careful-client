@@ -25,7 +25,7 @@
 					</el-menu>
 				</el-aside>
 				<el-main>
-					<div class="view">
+					<div id="view">
 						<router-view />
 					</div>
 				</el-main>
@@ -105,6 +105,7 @@
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
+		background-color: #fff;
 		#header {
 			padding: 0;
 			.left {
@@ -128,6 +129,10 @@
 				height: 60px;
 				border: 1px solid rgb(67, 74, 80);
 			}
+		}
+		#view {
+			width: 100%;
+  height: calc(100vh - 100px);
 		}
 	}
 </style>
